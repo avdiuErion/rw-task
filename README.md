@@ -28,6 +28,7 @@ This is a backend application for a simple e-commerce platform built using TypeS
     ```
 
 3. **Set up environment variables**
+
     Create a `.env` file in the root of the project and add the following variables:
     ```env
     CONNECTION_STRING=postgres://postgres.cmcqjsvejpptqefvtzev:2v0fBNQOnbzp3Bi6@aws-0-eu-central-1.pooler.supabase.com:5432/postgres
@@ -35,8 +36,6 @@ This is a backend application for a simple e-commerce platform built using TypeS
     ```
 
 ## Running the Application
-
-1. **Development**
     ```bash
     npm start
     ```
