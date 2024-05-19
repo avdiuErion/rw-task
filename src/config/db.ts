@@ -1,6 +1,8 @@
 import { Sequelize } from 'sequelize-typescript';
 import dotenv from 'dotenv';
 import { Product } from '../models/Product';
+import { Variant } from '../models/Variant';
+import { SKU } from '../models/SKU';
 dotenv.config();
 
 const { CONNECTION_STRING } = process.env;
@@ -12,7 +14,7 @@ if (!CONNECTION_STRING) {
 const sequelize = new Sequelize(CONNECTION_STRING, {
     dialect: "postgres",
     logging: false,
-    models: [Product],
+    models: [Product, Variant, SKU],
 });
 
 export const connectDB = async () => {

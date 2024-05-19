@@ -1,5 +1,6 @@
-import { Table, Column, Model, DataType, PrimaryKey, Default, BeforeCreate } from 'sequelize-typescript';
+import { Table, Column, Model, DataType, PrimaryKey, Default, HasMany } from 'sequelize-typescript';
 import { AutoMap } from '@automapper/classes';
+import { Variant } from './Variant';
 
 @Table({
     tableName: 'products'
@@ -42,11 +43,6 @@ export class Product extends Model<Product> {
     })
     inventory!: number;
 
-    @BeforeCreate
-    static async incrementInventory(instance: Product) {
-        const lastProduct = await Product.findOne({
-            order: [['createdAt', 'DESC']],
-        });
-        instance.inventory = lastProduct ? lastProduct.inventory + 1 : 1;
-    }
+    @HasMany(() => Variant)
+    variants!: Variant[];
 }
